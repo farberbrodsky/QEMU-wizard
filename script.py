@@ -143,7 +143,9 @@ if yes_or_no("Would you like to install an operating system now? (y/n): "):
     print(cmd)
     os.system(cmd)
 
-print("Done!")
+print("Done! Saving run.sh.")
+with open("run.sh", "w") as f:
+    f.write(script)
 
 # -drive file=image.qcow2,format=qcow2
 # -cdrom boot.iso
