@@ -3,6 +3,7 @@ from time import sleep
 from sys import exit
 import subprocess
 import json
+import stat
 import os
 
 
@@ -146,6 +147,7 @@ if yes_or_no("Would you like to install an operating system now? (y/n): "):
 print("Done! Saving run.sh.")
 with open("run.sh", "w") as f:
     f.write(script)
+os.chmod("run.sh", os.stat("run.sh").st_mode | stat.S_IEXEC)
 
 # -drive file=image.qcow2,format=qcow2
 # -cdrom boot.iso
